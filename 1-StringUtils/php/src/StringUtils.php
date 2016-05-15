@@ -66,7 +66,7 @@ class StringUtils
      */
     public static function getStringBetween($string, $start, $end)
     {
-        $string = ' '.$string;
+        $string = ' ' . $string;
         $ini = strpos($string, $start);
         if ($ini == 0) {
             return '';
@@ -181,7 +181,7 @@ class StringUtils
     }
 
     /**
-     * returns the camelized version of a word.
+     * returns the camelcase version of a word.
      *
      * @param string $str
      *
@@ -192,6 +192,11 @@ class StringUtils
         return lcfirst(strtr(ucwords(strtr($str, array('_' => ' ', '.' => '_ ', '\\' => '_ '))), array(' ' => '')));
     }
 
+    /**
+     * returns the snake case version of a word
+     * @param $str
+     * @return string
+     */
     public static function underscore($str)
     {
         $str = preg_replace('/[^-_\w\s]/', '', $str);
@@ -200,12 +205,17 @@ class StringUtils
         return strtolower($str);
     }
 
+    /**
+     * returns the title case, camel case version of a string
+     * @param $str
+     * @return string
+     */
     public static function titleCase($str)
     {
-        $downcased = [
+        $downCase = [
             'a' => 1, 'an' => 1, 'the' => 1, // articles
             'and' => 1, 'but' => 1, 'for' => 1, 'nor' => 1, 'or' => 1, 'so' => 1, 'yet' => 1, // coordinating conjunctions
-            'aboard' => 1, 'about' => 1, 'above' => 1, 'across' => 1, 'after' => 1, 'against' => 1, 'along' => 1, 'amid' => 1, 'among' => 1, 'around' => 1, 'as' => 1, 'at' => 1, 'atop' => 1, 'before' => 1, 'behind' => 1, 'below' => 1, 'beneath' => 1, 'beside' => 1, 'between' => 1, 'beyond' => 1, 'by' => 1, 'despite' => 1, 'down' => 1, 'during' => 1, 'for' => 1, 'from' => 1, 'in' => 1, 'inside' => 1, 'into' => 1, 'like' => 1, 'near' => 1, 'of' => 1, 'off' => 1, 'on' => 1, 'onto' => 1, 'out' => 1, 'outside' => 1, 'over' => 1, 'past' => 1, 'regarding' => 1, 'round' => 1, 'since' => 1, 'than' => 1, 'through' => 1, 'throughout' => 1, 'till' => 1, 'to' => 1, 'toward' => 1, 'under' => 1, 'unlike' => 1, 'until' => 1, 'up' => 1, 'upon' => 1, 'with' => 1, 'within' => 1, 'without' => 1 // prepositions
+            'aboard' => 1, 'about' => 1, 'above' => 1, 'across' => 1, 'after' => 1, 'against' => 1, 'along' => 1, 'amid' => 1, 'among' => 1, 'around' => 1, 'as' => 1, 'at' => 1, 'atop' => 1, 'before' => 1, 'behind' => 1, 'below' => 1, 'beneath' => 1, 'beside' => 1, 'between' => 1, 'beyond' => 1, 'by' => 1, 'despite' => 1, 'down' => 1, 'during' => 1, 'from' => 1, 'in' => 1, 'inside' => 1, 'into' => 1, 'like' => 1, 'near' => 1, 'of' => 1, 'off' => 1, 'on' => 1, 'onto' => 1, 'out' => 1, 'outside' => 1, 'over' => 1, 'past' => 1, 'regarding' => 1, 'round' => 1, 'since' => 1, 'than' => 1, 'through' => 1, 'throughout' => 1, 'till' => 1, 'to' => 1, 'toward' => 1, 'under' => 1, 'unlike' => 1, 'until' => 1, 'up' => 1, 'upon' => 1, 'with' => 1, 'within' => 1, 'without' => 1 // prepositions
         ];
         $words = preg_split('/\s+/', strtolower($str));
         if (count($words) < 3) {
@@ -216,13 +226,20 @@ class StringUtils
         $last = array_pop($words);
         array_push($words, ucfirst($last));
         foreach ($words as &$word) {
-            if (!isset($downcased[strtolower($word)])) {
+            if (!isset($downCase[strtolower($word)])) {
                 $word = ucfirst($word);
             }
         }
         return implode(' ', $words);
     }
 
+
+    /**
+     * returns the word count of a string
+     *
+     * @param $str
+     * @return int
+     */
     public function wordCount($str)
     {
         return strlen($str);
