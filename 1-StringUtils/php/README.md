@@ -1,8 +1,9 @@
 # Install
 ```
-composer dump-autoload --optmize
+composer install
+composer dump-autoload --optimize
 ```
 # Test
 ```
-phpunit tests
+phpunit
 ```
