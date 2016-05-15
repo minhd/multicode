@@ -1,0 +1,17 @@
+{
+    "name": "dekarvn/php",
+    "authors": [
+        {
+            "name": "Minh Duc Nguyen",
+            "email": "dekarvn@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MinhD\\": "src"
+        }
+    }
+}

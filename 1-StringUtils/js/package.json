@@ -1,0 +1,16 @@
+{
+  "name": "Testing-ReverseString-with-mocha",
+  "version": "0.1.0",
+  "author": "Minh Duc Nguyen <dekarvn@gmail.com>",
+  "description": "A barebone example just to test out mocha",
+  "scripts": {
+    "test": "mocha UnitTest.js"
+  },
+  "dependencies": {
+    "chai": "~1.4.2",
+    "mocha": "*"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
